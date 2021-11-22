@@ -17,7 +17,7 @@ namespace eCommerceStarterCode.Controllers
         {
             _context = context;
         }
-
+     
         //[HttpGet, Authorize]
         //public IActionResult GetProductsForUser() 
         //{
@@ -33,7 +33,7 @@ namespace eCommerceStarterCode.Controllers
 
 
         //[HttpGet("{id}")]
-        
+
         //public IActionResult GetProductById(int id)
         //{
         //    var products = _context.Products.Include(products => products.User);
@@ -53,5 +53,5 @@ namespace eCommerceStarterCode.Controllers
         //    _context.SaveChanges();
         //    return Ok();
         //}
-     }
+    }
 }

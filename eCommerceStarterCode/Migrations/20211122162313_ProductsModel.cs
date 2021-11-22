@@ -2,21 +2,21 @@
 
 namespace eCommerceStarterCode.Migrations
 {
-    public partial class initalmigration : Migration
+    public partial class ProductsModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "a85197de-2346-492e-861e-08b0370b485f");
+                keyValue: "18aab1c2-4fd2-4cd3-8e64-ee286dfaeeac");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "c073f42c-79e8-41a6-a5d7-0ed41ae7aca0");
+                keyValue: "cf9c8a19-3668-4876-b9b2-495fd419567a");
 
-          
+          ;
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -24,14 +24,14 @@ namespace eCommerceStarterCode.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "1bef142f-7b10-4b7d-8de4-733194083783");
+                keyValue: "73a33b8e-29bf-4582-89dc-26abce854af7");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "fe839795-5cf0-497e-989b-bc72a3bbba1d");
+                keyValue: "fc38c130-2ff8-4699-8185-54ecf1f83eb3");
 
-         
+           
         }
     }
 }
