@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace eCommerceStarterCode.Models
 {
@@ -18,6 +20,5 @@ namespace eCommerceStarterCode.Models
         public string Reviews { get; set; }
 
         public int Rating { get; set; }
-
     }
 }
