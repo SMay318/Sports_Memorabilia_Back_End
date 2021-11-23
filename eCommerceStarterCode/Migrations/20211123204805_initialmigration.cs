@@ -171,6 +171,26 @@ namespace eCommerceStarterCode.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Rating = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.ProductId);
+                    table.ForeignKey(
+                        name: "FK_Reviews_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ShoppingCarts",
                 columns: table => new
                 {
@@ -200,8 +220,8 @@ namespace eCommerceStarterCode.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "dff3e7ed-e4f8-4767-be99-29b0a4246322", "2ed5dde6-87f2-4ebb-a932-c9e6aaaa654c", "User", "USER" },
-                    { "bf114733-80fb-4a3d-94d3-c7648af4b676", "388ae41d-8827-45fe-bdf2-f2d6975c4c62", "Admin", "ADMIN" }
+                    { "aef61cfd-a9d3-4a0f-9e89-0d84a0eac332", "04d4ec25-01ea-4d4e-ad77-48d76d93ac63", "User", "USER" },
+                    { "0d43456c-c6c4-46e5-9c25-1072b3f21266", "ac9c4b11-17d8-4eac-9ac4-d1fff1a8ca71", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -209,8 +229,16 @@ namespace eCommerceStarterCode.Migrations
                 columns: new[] { "Id", "Category", "Description", "Name", "Price" },
                 values: new object[,]
                 {
-                    { 1, "Football", "Football jersey", "Jersey", 180m },
-                    { 2, "Sports Cards", "Rookie Card", "Peyton Manning Card", 500m }
+                    { 1, "Football", "Signed Rodney Harrison SuperBowl Jersey", "Rodney Harrison Jersey", 7500m },
+                    { 2, "Sports Cards", "Rookie Card", "Peyton Manning Card", 500m },
+                    { 3, "Football", "Signed Tom Brady Helmet", "Tom Brady Helmet", 1000m },
+                    { 4, "Football", "Signed Clinton Portis Jersey", "Clinton Portis Jersey", 350m },
+                    { 5, "Basketball", "Signed Paul Pierce Game 1 Finals Jersey", "Basketball Jersey", 5000m },
+                    { 6, "Basketball", "Signed Kevin Garnett Game 1 Finals Jersey", "Basketball Jersey", 2500m },
+                    { 7, "Hockey", "Signed Tuuka Rask Helmet", "Goalie Helmet", 2500m },
+                    { 8, "Hockey", "Signed Patrice Bergeron stick from Game 1 of Stanley Cup", "Patrice Bergeron Hockey Stick", 10000m },
+                    { 9, "Baseball", "Signed Curt Schilling Game Ball World Series", "Curt Schilling Game Ball", 80000m },
+                    { 10, "Baseball", "Signed David Ortiz Baseball Bat", "David Ortiz Baseball Bat", 3000m }
                 });
 
             migrationBuilder.CreateIndex(
@@ -274,6 +302,9 @@ namespace eCommerceStarterCode.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Reviews");
 
             migrationBuilder.DropTable(
                 name: "ShoppingCarts");

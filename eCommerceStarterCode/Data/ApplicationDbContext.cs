@@ -33,9 +33,18 @@ namespace eCommerceStarterCode.Data
                 .Property(p => p.Price)
                 .HasPrecision(16, 2);
 
-            modelBuilder.Entity<Product>().HasData(
-                new Product { Id = 1, Name = "Jersey", Description = "Football jersey", Price = 180, Category = "Football"},
-                new Product { Id = 2, Name = "Peyton Manning Card", Description = "Rookie Card", Price = 500, Category = "Sports Cards"});
+            _ = modelBuilder.Entity<Product>().HasData(
+                new Product { Id = 1, Name = "Rodney Harrison Jersey", Description = "Signed Rodney Harrison SuperBowl Jersey", Price = 7500, Category = "Football" },
+                new Product { Id = 2, Name = "Peyton Manning Card", Description = "Rookie Card", Price = 500, Category = "Sports Cards" },
+                new Product { Id = 3, Name = "Tom Brady Helmet", Description = "Signed Tom Brady Helmet", Price = 1000, Category = "Football" },
+                new Product { Id = 4, Name = "Clinton Portis Jersey", Description = "Signed Clinton Portis Jersey", Price = 350, Category = "Football" },
+                new Product { Id = 5, Name = "Basketball Jersey", Description = "Signed Paul Pierce Game 1 Finals Jersey", Price = 5000, Category = "Basketball" },
+                new Product { Id = 6, Name = "Basketball Jersey", Description = "Signed Kevin Garnett Game 1 Finals Jersey", Price = 2500, Category = "Basketball" },
+                new Product { Id = 7, Name = "Goalie Helmet", Description = "Signed Tuuka Rask Helmet", Price = 2500, Category = "Hockey" },
+                new Product { Id = 8, Name = "Patrice Bergeron Hockey Stick", Description = "Signed Patrice Bergeron stick from Game 1 of Stanley Cup", Price = 10000, Category = "Hockey" },
+                new Product { Id = 9, Name = "Curt Schilling Game Ball", Description = "Signed Curt Schilling Game Ball World Series", Price = 80000, Category = "Baseball" },
+                new Product { Id = 10, Name = "David Ortiz Baseball Bat", Description = "Signed David Ortiz Baseball Bat", Price = 3000, Category = "Baseball" }
+                );
         }
 
     }

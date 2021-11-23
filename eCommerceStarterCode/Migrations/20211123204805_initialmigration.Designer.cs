@@ -10,8 +10,8 @@ using eCommerceStarterCode.Data;
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211123192757_reviewmodel")]
-    partial class reviewmodel
+    [Migration("20211123204805_initialmigration")]
+    partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "890c4a7b-4098-4989-845f-d56ff4369ecc",
-                            ConcurrencyStamp = "aa937ec9-b225-4cba-b318-a3c826fdc13d",
+                            Id = "aef61cfd-a9d3-4a0f-9e89-0d84a0eac332",
+                            ConcurrencyStamp = "04d4ec25-01ea-4d4e-ad77-48d76d93ac63",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "95264016-d084-4731-b0ad-6bd2a58ee3a5",
-                            ConcurrencyStamp = "23f6223f-ba73-4aa3-960d-2d077778720a",
+                            Id = "0d43456c-c6c4-46e5-9c25-1072b3f21266",
+                            ConcurrencyStamp = "ac9c4b11-17d8-4eac-9ac4-d1fff1a8ca71",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -197,9 +197,9 @@ namespace eCommerceStarterCode.Migrations
                         {
                             Id = 1,
                             Category = "Football",
-                            Description = "Football jersey",
-                            Name = "Jersey",
-                            Price = 180m
+                            Description = "Signed Rodney Harrison SuperBowl Jersey",
+                            Name = "Rodney Harrison Jersey",
+                            Price = 7500m
                         },
                         new
                         {
@@ -208,6 +208,70 @@ namespace eCommerceStarterCode.Migrations
                             Description = "Rookie Card",
                             Name = "Peyton Manning Card",
                             Price = 500m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Category = "Football",
+                            Description = "Signed Tom Brady Helmet",
+                            Name = "Tom Brady Helmet",
+                            Price = 1000m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Category = "Football",
+                            Description = "Signed Clinton Portis Jersey",
+                            Name = "Clinton Portis Jersey",
+                            Price = 350m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Category = "Basketball",
+                            Description = "Signed Paul Pierce Game 1 Finals Jersey",
+                            Name = "Basketball Jersey",
+                            Price = 5000m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Category = "Basketball",
+                            Description = "Signed Kevin Garnett Game 1 Finals Jersey",
+                            Name = "Basketball Jersey",
+                            Price = 2500m
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Category = "Hockey",
+                            Description = "Signed Tuuka Rask Helmet",
+                            Name = "Goalie Helmet",
+                            Price = 2500m
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Category = "Hockey",
+                            Description = "Signed Patrice Bergeron stick from Game 1 of Stanley Cup",
+                            Name = "Patrice Bergeron Hockey Stick",
+                            Price = 10000m
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Category = "Baseball",
+                            Description = "Signed Curt Schilling Game Ball World Series",
+                            Name = "Curt Schilling Game Ball",
+                            Price = 80000m
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Category = "Baseball",
+                            Description = "Signed David Ortiz Baseball Bat",
+                            Name = "David Ortiz Baseball Bat",
+                            Price = 3000m
                         });
                 });
 
