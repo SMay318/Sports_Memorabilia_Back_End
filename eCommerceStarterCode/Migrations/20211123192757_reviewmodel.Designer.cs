@@ -10,8 +10,8 @@ using eCommerceStarterCode.Data;
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211123174655_initialmigration-cash")]
-    partial class initialmigrationcash
+    [Migration("20211123192757_reviewmodel")]
+    partial class reviewmodel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a5c8fc5a-d736-42f7-bd6d-85af24bae35d",
-                            ConcurrencyStamp = "807b138f-51be-449c-8e08-a6fdbf15932b",
+                            Id = "890c4a7b-4098-4989-845f-d56ff4369ecc",
+                            ConcurrencyStamp = "aa937ec9-b225-4cba-b318-a3c826fdc13d",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "6451eecf-7ead-4c35-b497-ec10880a7738",
-                            ConcurrencyStamp = "08391f94-ea29-434e-9f4c-57f2d5c9d283",
+                            Id = "95264016-d084-4731-b0ad-6bd2a58ee3a5",
+                            ConcurrencyStamp = "23f6223f-ba73-4aa3-960d-2d077778720a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -188,12 +188,6 @@ namespace eCommerceStarterCode.Migrations
                         .HasPrecision(16, 2)
                         .HasColumnType("decimal(16,2)");
 
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Reviews")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Products");
@@ -205,9 +199,7 @@ namespace eCommerceStarterCode.Migrations
                             Category = "Football",
                             Description = "Football jersey",
                             Name = "Jersey",
-                            Price = 180m,
-                            Rating = 0,
-                            Reviews = "0"
+                            Price = 180m
                         },
                         new
                         {
@@ -215,10 +207,27 @@ namespace eCommerceStarterCode.Migrations
                             Category = "Sports Cards",
                             Description = "Rookie Card",
                             Name = "Peyton Manning Card",
-                            Price = 500m,
-                            Rating = 0,
-                            Reviews = "0"
+                            Price = 500m
                         });
+                });
+
+            modelBuilder.Entity("eCommerceStarterCode.Models.Review", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("eCommerceStarterCode.Models.ShoppingCart", b =>
@@ -359,6 +368,17 @@ namespace eCommerceStarterCode.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("eCommerceStarterCode.Models.Review", b =>
+                {
+                    b.HasOne("eCommerceStarterCode.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("eCommerceStarterCode.Models.ShoppingCart", b =>

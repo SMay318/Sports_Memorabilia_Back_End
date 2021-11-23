@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace eCommerceStarterCode.Migrations
 {
-    public partial class initialmigrationcash : Migration
+    public partial class initialmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,9 +57,7 @@ namespace eCommerceStarterCode.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(16,2)", precision: 16, scale: 2, nullable: false),
-                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Reviews = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Rating = table.Column<int>(type: "int", nullable: false)
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -202,17 +200,17 @@ namespace eCommerceStarterCode.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "a5c8fc5a-d736-42f7-bd6d-85af24bae35d", "807b138f-51be-449c-8e08-a6fdbf15932b", "User", "USER" },
-                    { "6451eecf-7ead-4c35-b497-ec10880a7738", "08391f94-ea29-434e-9f4c-57f2d5c9d283", "Admin", "ADMIN" }
+                    { "dff3e7ed-e4f8-4767-be99-29b0a4246322", "2ed5dde6-87f2-4ebb-a932-c9e6aaaa654c", "User", "USER" },
+                    { "bf114733-80fb-4a3d-94d3-c7648af4b676", "388ae41d-8827-45fe-bdf2-f2d6975c4c62", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "Category", "Description", "Name", "Price", "Rating", "Reviews" },
+                columns: new[] { "Id", "Category", "Description", "Name", "Price" },
                 values: new object[,]
                 {
-                    { 1, "Football", "Football jersey", "Jersey", 180m, 0, "0" },
-                    { 2, "Sports Cards", "Rookie Card", "Peyton Manning Card", 500m, 0, "0" }
+                    { 1, "Football", "Football jersey", "Jersey", 180m },
+                    { 2, "Sports Cards", "Rookie Card", "Peyton Manning Card", 500m }
                 });
 
             migrationBuilder.CreateIndex(

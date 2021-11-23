@@ -16,9 +16,6 @@ namespace eCommerceStarterCode.Models
         public decimal Price { get; set; }
 
         public string Category { get; set; }   
-        
-        public string Reviews { get; set; }
 
-        public int Rating { get; set; }
     }
 }

@@ -52,5 +52,14 @@ namespace eCommerceStarterCode.Controllers
             _context.SaveChanges();
             return Ok();
         }
+
+        [HttpPost]
+
+        public IActionResult CreateShoppingCart(ShoppingCart shoppingcart)
+        {
+            _context.ShoppingCarts.Add(shoppingcart);
+            _context.SaveChanges();
+            return Ok();
+        }
     }
 }
