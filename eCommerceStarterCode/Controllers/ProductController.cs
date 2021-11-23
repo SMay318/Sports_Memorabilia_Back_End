@@ -42,9 +42,9 @@ namespace eCommerceStarterCode.Controllers
             return Ok(product);
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
 
-        public IActionResult CreateProduct([FromBody]Product product)
+        public IActionResult CreateProduct(Product product)
         {
             _context.Products.Add(product);
             _context.SaveChanges();

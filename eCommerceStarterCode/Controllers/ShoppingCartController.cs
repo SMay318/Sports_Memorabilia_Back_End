@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Security.Claims;
 
@@ -18,18 +19,17 @@ namespace eCommerceStarterCode.Controllers
             _context = context;
         }
 
-        //        [HttpGet, Authorize]
-        //        public IActionResult GetShoppingCartForUser()
-        //        {
-        //            var userId = User.FindFirstValue("id");
-        //            var shoppingcart = _context.ShoppingCarts.Include().Where(products => products.UserId == userId);
-        //            if (shoppingcart == null)
-        //            {
-        //                return NotFound();
-        //            }
+        [HttpGet("{userid}"), Authorize]
+        public IActionResult GetShoppingCartForUser(string userid)
+        {
+            var usercart = _context.ShoppingCarts.Include(uc => uc.User).Include(uc => uc.Product).Where(uc => uc.UserId == userid);
+            if (usercart == null)
+            {
+                return NotFound();
+            }
 
-        //            return Ok(shoppingcart);
-        //        }
+            return Ok(usercart);
+        }
 
 
         //        [HttpGet("{id}")]
@@ -43,15 +43,6 @@ namespace eCommerceStarterCode.Controllers
         //            }
 
         //            return Ok(products);
-        //        }
-
-        //        [HttpPost, Authorize]
-
-        //        public IActionResult CreateProduct(Product product)
-        //        {
-        //            _context.Products.Add(product);
-        //            _context.SaveChanges();
-        //            return Ok();
         //        }
     }
 }
