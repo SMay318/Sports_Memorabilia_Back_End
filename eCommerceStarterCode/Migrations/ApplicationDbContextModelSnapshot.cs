@@ -48,15 +48,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "496631fa-320c-4720-8bd5-aeb434c9db5b",
-                            ConcurrencyStamp = "e374f2a8-bb63-4d26-8360-43a8a1230468",
+                            Id = "a5c8fc5a-d736-42f7-bd6d-85af24bae35d",
+                            ConcurrencyStamp = "807b138f-51be-449c-8e08-a6fdbf15932b",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "5f9bf5fb-f648-4e48-ab5c-1231bea6c71b",
-                            ConcurrencyStamp = "13f3f392-b53e-4fba-8ef5-e3e538feb416",
+                            Id = "6451eecf-7ead-4c35-b497-ec10880a7738",
+                            ConcurrencyStamp = "08391f94-ea29-434e-9f4c-57f2d5c9d283",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -183,7 +183,8 @@ namespace eCommerceStarterCode.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(16, 2)
+                        .HasColumnType("decimal(16,2)");
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
@@ -194,6 +195,28 @@ namespace eCommerceStarterCode.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Category = "Football",
+                            Description = "Football jersey",
+                            Name = "Jersey",
+                            Price = 180m,
+                            Rating = 0,
+                            Reviews = "0"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Category = "Sports Cards",
+                            Description = "Rookie Card",
+                            Name = "Peyton Manning Card",
+                            Price = 500m,
+                            Rating = 0,
+                            Reviews = "0"
+                        });
                 });
 
             modelBuilder.Entity("eCommerceStarterCode.Models.ShoppingCart", b =>

@@ -24,10 +24,14 @@ namespace eCommerceStarterCode.Data
 
             modelBuilder.Entity<ShoppingCart>()
                 .HasKey(sc => new { sc.ProductId, sc.UserId });
-        
-            //modelBuilder.Entity<Product>().HasData(
-                //new Product() { ProductId = 1, ProductName = "", Description = "", Price = 0, Category = "", Reviews = "", Rating = 0},
-                //new Product() { ProductId = 2, ProductName = "", Description = "", Price = 0, Category = "", Reviews = "", Rating = 0 },
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Price)
+                .HasPrecision(16, 2);
+
+            modelBuilder.Entity<Product>().HasData(
+                new Product { Id = 1, Name = "Jersey", Description = "Football jersey", Price = 180, Category = "Football", Reviews = "0", Rating = 0 },
+                new Product { Id = 2, Name = "Peyton Manning Card", Description = "Rookie Card", Price = 500, Category = "Sports Cards", Reviews = "0", Rating = 0 });
         }
 
     }
