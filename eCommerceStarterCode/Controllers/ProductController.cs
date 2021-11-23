@@ -65,5 +65,15 @@ namespace eCommerceStarterCode.Controllers
             return Ok();
 
         }
+
+        [HttpDelete("{id}"), Authorize]
+        
+        public IActionResult DeleteProduct(int id)
+        {
+            var product = _context.Products.FirstOrDefault(product => product.Id == id);
+            _context.Remove(product);
+            _context.SaveChanges();
+            return Ok();
+        }
     }
 }
