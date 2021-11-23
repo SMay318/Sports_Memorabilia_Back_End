@@ -53,9 +53,9 @@ namespace eCommerceStarterCode.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
 
-        public IActionResult CreateShoppingCart(ShoppingCart shoppingcart)
+        public IActionResult CreateShoppingCart([FromBody]ShoppingCart shoppingcart)
         {
             _context.ShoppingCarts.Add(shoppingcart);
             _context.SaveChanges();

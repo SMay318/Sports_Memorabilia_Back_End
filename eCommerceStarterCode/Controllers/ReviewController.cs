@@ -9,7 +9,7 @@ using System.Linq;
 namespace eCommerceStarterCode.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController, Authorize]
     public class ReviewController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
