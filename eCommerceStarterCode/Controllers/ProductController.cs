@@ -50,5 +50,20 @@ namespace eCommerceStarterCode.Controllers
             _context.SaveChanges();
             return Ok();
         }
+
+        [HttpPut("{id}"), Authorize]
+
+        public IActionResult UpdateProductById(int id, [FromBody] Product value )
+        {
+            var product = _context.Products.FirstOrDefault(product => product.Id == id);
+            product.Name = value.Name;
+            product.Description = value.Description;
+            product.Price = value.Price;
+            product.Category = value.Category;
+            _context.Products.Update(product);
+            _context.SaveChanges();
+            return Ok();
+
+        }
     }
 }
