@@ -1,4 +1,5 @@
 ﻿using eCommerceStarterCode.Data;
+using eCommerceStarterCode.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,18 +32,25 @@ namespace eCommerceStarterCode.Controllers
             return Ok(usercart);
         }
 
+        [HttpPut("{userid}"), Authorize]
+        public IActionResult UpdateShoppingCartByUserId(string userid, [FromBody] ShoppingCart value)
+        {
+            var shoppingcart = _context.ShoppingCarts.FirstOrDefault(shoppingcart => shoppingcart.UserId == userid);
+            shoppingcart.Quantity = value.Quantity;
+            _context.ShoppingCarts.Update(shoppingcart);
+            _context.SaveChanges();
+            return Ok();
 
-        //        [HttpGet("{id}")]
+        }
 
-        //        public IActionResult GetProductById(int id)
-        //        {
-        //            var products = _context.Products.Include(products => products.User);
-        //            if (products == null)
-        //            {
-        //                return NotFound();
-        //            }
+        [HttpDelete("{userid}/{productid}"), Authorize]
 
-        //            return Ok(products);
-        //        }
+        public IActionResult DeleteProductFromShoppingCart(string userid, int productid)
+        {
+            var product = _context.ShoppingCarts.Where(shoppingcart => shoppingcart.UserId == userid).FirstOrDefault(shoppingcart => shoppingcart.ProductId == productid);
+            _context.Remove(product);
+            _context.SaveChanges();
+            return Ok();
+        }
     }
 }
