@@ -44,7 +44,13 @@ namespace eCommerceStarterCode.Data
                 new Product { Id = 8, Name = "Patrice Bergeron Hockey Stick", Description = "Signed Patrice Bergeron stick from Game 1 of Stanley Cup", Price = 10000, Category = "Hockey" },
                 new Product { Id = 9, Name = "Curt Schilling Game Ball", Description = "Signed Curt Schilling Game Ball World Series", Price = 80000, Category = "Baseball" },
                 new Product { Id = 10, Name = "David Ortiz Baseball Bat", Description = "Signed David Ortiz Baseball Bat", Price = 3000, Category = "Baseball" }
-                );
+         
+               );
+
+            
+             //modelBuilder.Entity<User>().HasData(
+             //   new User { FirstName = "Sean", LastName = "May", UserName = "smay", Email = "smay@email.com", Passwor = "somePass12", PhoneNumber = "555-555-5556" });
+
         }
 
     }
