@@ -20,7 +20,7 @@ namespace eCommerceStarterCode.Controllers
             _context = context;
         }
 
-        [HttpGet, Authorize]
+        [HttpGet]
         public IActionResult GetAllProducts()
         {
             var products = _context.Products.ToList();
@@ -29,7 +29,7 @@ namespace eCommerceStarterCode.Controllers
         }
 
 
-        [HttpGet("{id}"), Authorize]
+        [HttpGet("{id}")]
 
         public IActionResult GetProductById(int id)
         {
@@ -42,7 +42,7 @@ namespace eCommerceStarterCode.Controllers
             return Ok(product);
         }
 
-        [HttpPost, Authorize]
+        [HttpPost]
 
         public IActionResult CreateProduct(Product product)
         {
@@ -51,7 +51,7 @@ namespace eCommerceStarterCode.Controllers
             return Ok();
         }
 
-        [HttpPut("{id}"), Authorize]
+        [HttpPut("{id}")]
 
         public IActionResult UpdateProductById(int id, [FromBody] Product value )
         {
@@ -66,7 +66,7 @@ namespace eCommerceStarterCode.Controllers
 
         }
 
-        [HttpDelete("{id}"), Authorize]
+        [HttpDelete("{id}")]
         
         public IActionResult DeleteProduct(int id)
         {

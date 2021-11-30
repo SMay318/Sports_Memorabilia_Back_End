@@ -10,7 +10,7 @@ using System.Security.Claims;
 namespace eCommerceStarterCode.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController, Authorize]
     public class ShoppingCartController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -20,7 +20,7 @@ namespace eCommerceStarterCode.Controllers
             _context = context;
         }
 
-        [HttpGet("{userid}"), Authorize]
+        [HttpGet("{userid}")]
         public IActionResult GetShoppingCartForUser(string userid)
         {
             var usercart = _context.ShoppingCarts.Include(uc => uc.User).Include(uc => uc.Product).Where(uc => uc.UserId == userid);
@@ -32,7 +32,7 @@ namespace eCommerceStarterCode.Controllers
             return Ok(usercart);
         }
 
-        [HttpPut("{userid}"), Authorize]
+        [HttpPut("{userid}")]
         public IActionResult UpdateShoppingCartByUserId(string userid, [FromBody] ShoppingCart value)
         {
             var shoppingcart = _context.ShoppingCarts.FirstOrDefault(shoppingcart => shoppingcart.UserId == userid);
@@ -43,7 +43,7 @@ namespace eCommerceStarterCode.Controllers
 
         }
 
-        [HttpDelete("{userid}/{productid}"), Authorize]
+        [HttpDelete("{userid}/{productid}")]
 
         public IActionResult DeleteProductFromShoppingCart(string userid, int productid)
         {
@@ -53,7 +53,7 @@ namespace eCommerceStarterCode.Controllers
             return Ok();
         }
 
-        [HttpPost, Authorize]
+        [HttpPost]
 
         public IActionResult CreateShoppingCart([FromBody]ShoppingCart shoppingcart)
         {
