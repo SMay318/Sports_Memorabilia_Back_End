@@ -10,7 +10,7 @@ using System.Security.Claims;
 namespace eCommerceStarterCode.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController, Authorize]
+    [ApiController]
     public class ShoppingCartController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -20,7 +20,7 @@ namespace eCommerceStarterCode.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public IActionResult GetShoppingCartForUser()
         {
             var UserId = User.FindFirstValue("id");
