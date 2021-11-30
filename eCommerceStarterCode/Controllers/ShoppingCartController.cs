@@ -20,10 +20,15 @@ namespace eCommerceStarterCode.Controllers
             _context = context;
         }
 
-        [HttpGet("{userid}")]
-        public IActionResult GetShoppingCartForUser(string userid)
+        [HttpGet]
+        public IActionResult GetShoppingCartForUser()
         {
-            var usercart = _context.ShoppingCarts.Include(uc => uc.User).Include(uc => uc.Product).Where(uc => uc.UserId == userid);
+            var UserId = User.FindFirstValue("id");
+            var usercart = _context.ShoppingCarts
+                .Include(uc => uc.User)
+                .Include(uc => uc.Product)
+                .Where(uc => uc.UserId == UserId);
+
             if (usercart == null)
             {
                 return NotFound();
@@ -32,10 +37,15 @@ namespace eCommerceStarterCode.Controllers
             return Ok(usercart);
         }
 
-        [HttpPut("{userid}")]
-        public IActionResult UpdateShoppingCartByUserId(string userid, [FromBody] ShoppingCart value)
+        [HttpPut]
+        public IActionResult UpdateShoppingCartByUserId([FromBody] ShoppingCart value)
         {
-            var shoppingcart = _context.ShoppingCarts.FirstOrDefault(shoppingcart => shoppingcart.UserId == userid);
+            var UserId = User.FindFirstValue("id");
+
+            var shoppingcart = _context.ShoppingCarts
+                .Where(uc => uc.UserId == UserId && uc.ProductId == value.ProductId)
+                .SingleOrDefault();
+
             shoppingcart.Quantity = value.Quantity;
             _context.ShoppingCarts.Update(shoppingcart);
             _context.SaveChanges();
